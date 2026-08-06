@@ -1,13 +1,13 @@
 # SPDX-License-Identifier: GPL-2.0
 #
-# Copyright (C) 2026 Yuzhii0718
+# Copyright (C) 2026 eric
 #
 # All rights reserved.
 #
 # This file is part of the project bl-mt798x-dhcpd
 # You may not use, copy, modify or distribute this file except in compliance with the license agreement.
 #
-name: FIP Build - Yuzhii0718
+name: FIP Build - eric
 
 on:
   repository_dispatch:
@@ -75,7 +75,7 @@ on:
       REPO_URL:
         description: 'Source repository'
         required: true
-        default: 'https://github.com/Yuzhii0718/bl-mt798x-dhcpd'
+        default: 'https://github.com/ericyin/bl-mt798x-dhcpd'
         type: string
       REPO_BRANCH:
         description: 'Repository branch'
