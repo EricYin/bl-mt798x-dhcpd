@@ -21,7 +21,7 @@ on:
       REPO_BRANCH:
         description: 'Repository branch'
         required: true
-        default: 'master'
+        default: 'eric-master'
         type: string
       GPT_TEMPLATE:
         description: 'Include template partition table'
