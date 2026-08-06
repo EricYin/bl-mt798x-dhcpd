@@ -26,7 +26,7 @@ on:
       ATF_VERSION: 
         description: 'ATF versions'
         required: true
-        default: '2025'
+        default: 'SP2'
         type: choice
         options:
           - '2025'
