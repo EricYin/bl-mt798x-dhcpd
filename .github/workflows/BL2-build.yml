@@ -21,7 +21,7 @@ on:
       REPO_BRANCH:
         description: 'Repository branch'
         required: true
-        default: 'master'
+        default: 'eric-maste'
         type: string
       ATF_VERSION: 
         description: 'ATF versions'
