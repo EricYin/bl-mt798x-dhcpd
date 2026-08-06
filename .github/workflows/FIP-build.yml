@@ -431,6 +431,7 @@ jobs:
             ;;
         esac
         config_apply "CONFIG_SIMG" "$([ "$CONFIG_SIMG" = "true" ] && echo y || echo n)"
+        config_apply "CONFIG_COMPRESS_FIP" "n"
         config_apply "CONFIG_SILENT" "y"
         config_apply "CONFIG_BUILD_LOG" "$([ "$CONFIG_BUILD_LOG" = "true" ] && echo y || echo n)"
 
