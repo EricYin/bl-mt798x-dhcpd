@@ -137,8 +137,6 @@ int start_web_failsafe(void)
 #ifdef CONFIG_MTK_TELNETD
 	if (IS_ENABLED(CONFIG_MTK_TELNETD)) {
 		const char *enable_str = env_get("telnet_enable");
-		const char *port_str = env_get("telnet_port");
-		unsigned long port = 23;
 		bool enable = true;
 
 		/* Check if telnet is explicitly disabled */
@@ -149,14 +147,8 @@ int start_web_failsafe(void)
 			}
 		}
 
-		if (enable) {
-			if (port_str) {
-				port = simple_strtoul(port_str, NULL, 10);
-				if (port < 1 || port > 65535)
-					port = 23;
-			}
-			mtk_telnetd_start((u16)port);
-		}
+		if (enable)
+			mtk_telnetd_start(mtk_telnetd_env_port("telnet_port", 23));
 	}
 #endif
 

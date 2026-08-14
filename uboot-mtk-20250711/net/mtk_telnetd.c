@@ -1157,6 +1157,21 @@ static void telnetd_callback(struct mtk_tcp_cb_data *cbd)
 /*  9. Public API                                                      */
 /* ================================================================== */
 
+u16 mtk_telnetd_env_port(const char *name, u16 def)
+{
+	const char *ep = env_get(name);
+	unsigned long p;
+
+	if (!ep)
+		return def;
+
+	p = simple_strtoul(ep, NULL, 10);
+	if (p < 1 || p > 65535)
+		return def;
+
+	return (u16)p;
+}
+
 int mtk_telnetd_start(u16 port)
 {
 	if (telnetd_inst.running)
@@ -1195,19 +1210,12 @@ static int do_telnetd(struct cmd_tbl *cmdtp, int flag, int argc,
 		return CMD_RET_USAGE;
 
 	if (!strcmp(argv[1], "start")) {
-		u16 port = 23;
+		u16 port = mtk_telnetd_env_port("telnet_port", 23);
 
 		if (argc > 2) {
 			unsigned long p = simple_strtoul(argv[2], NULL, 10);
 			if (p >= 1 && p <= 65535)
 				port = (u16)p;
-		} else {
-			const char *ep = env_get("telnet_port");
-			if (ep) {
-				unsigned long p = simple_strtoul(ep, NULL, 10);
-				if (p >= 1 && p <= 65535)
-					port = (u16)p;
-			}
 		}
 
 		if (mtk_telnetd_start(port))
