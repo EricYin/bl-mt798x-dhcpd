@@ -1238,5 +1238,5 @@ U_BOOT_CMD(telnetd, 3, 0, do_telnetd,
 	"Environment:\n"
 	"  telnet_port   - default port for telnetd\n"
 	"  telnetd_enable - auto-start on failsafe entry\n"
-	"                   (set 0/false/no/off to disable)"
+	"                   (set 0 to disable)"
 );

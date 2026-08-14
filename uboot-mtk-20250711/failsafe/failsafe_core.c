@@ -136,16 +136,12 @@ int start_web_failsafe(void)
 
 #ifdef CONFIG_MTK_TELNETD
 	if (IS_ENABLED(CONFIG_MTK_TELNETD)) {
-		const char *enable_str = env_get("telnet_enable");
+		const char *enable_str = env_get("telnetd_enable");
 		bool enable = true;
 
-		/* Check if telnet is explicitly disabled */
-		if (enable_str) {
-			if (!strcmp(enable_str, "0") || !strcasecmp(enable_str, "false") ||
-			    !strcasecmp(enable_str, "no") || !strcasecmp(enable_str, "off")) {
-				enable = false;
-			}
-		}
+		/* Explicitly disabled when telnetd_enable is "0" */
+		if (enable_str && !strcmp(enable_str, "0"))
+			enable = false;
 
 		if (enable)
 			mtk_telnetd_start(mtk_telnetd_env_port("telnet_port", 23));
