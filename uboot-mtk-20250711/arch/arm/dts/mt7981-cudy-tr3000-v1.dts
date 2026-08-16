@@ -22,11 +22,6 @@
 		system_led = "red:power";
 	};
 
-	memory@40000000 {
-		device_type = "memory";
-		reg = <0x40000000 0x20000000>;
-	};
-
 	mtd-layout {
 		layout@0 {
 			label = "default";
@@ -45,6 +40,11 @@
 			mtdids = "nmbm0=nmbm0";
 			mtdparts = "nmbm0:1024k(bl2),512k(u-boot-env),2048k(Factory),256k(bdinfo),2048k(fip),125184k(ubi)";
 		};
+	};
+
+	memory@40000000 {
+		device_type = "memory";
+		reg = <0x40000000 0x20000000>;
 	};
 
 	gpio-keys {
