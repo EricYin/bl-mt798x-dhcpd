@@ -254,7 +254,7 @@ ensure_failsafe_js_deps() {
 		return 0
 	fi
 
-	if [ -f "${marker}" ] && [ -d "${embed_dir}/node_modules/uglify-js" ]; then
+	if [ -f "${marker}" ] && [ -d "${embed_dir}/node_modules/terser" ] && [ -d "${embed_dir}/node_modules/clean-css" ] && [ -d "${embed_dir}/node_modules/html-minifier-terser" ]; then
 		info "Failsafe JS build dependencies already installed."
 		return 0
 	fi
